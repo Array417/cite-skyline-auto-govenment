@@ -1,4 +1,7 @@
 /.validation/
+/Library/
+/Logs/
+/Temp/
 **/bin/
 **/obj/
 **/node_modules/

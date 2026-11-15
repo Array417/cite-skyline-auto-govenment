@@ -1,6 +1,6 @@
 # AutoGovernment — AI 開發指引
 
-適用於本倉庫。更新：2026-11-15（Asia/Hong_Kong）。先讀 [PRD.md](PRD.md)、[Presidente 研究](docs/PRESIDENTE_RESEARCH.md) 與 [開發前驗證](docs/PREFLIGHT.md)，再開始實作。
+適用於本倉庫。更新：2026-11-16（Asia/Hong_Kong）。先讀 [PRD.md](PRD.md)、[Presidente 研究](docs/PRESIDENTE_RESEARCH.md) 與 [開發前驗證](docs/PREFLIGHT.md)，再開始實作。
 
 **最新使用者要求：直接交付完整成品，不分階段交付；開始正式功能實作前先完成關鍵可行性驗證。不要以 MVP、功能切片、stub 或後續版本取代任何已確認核心需求。內部技術實驗僅用來驗證，不算成品。**
 
@@ -14,6 +14,8 @@
 - 優先驗證獨立 Presidente extension：基礎 Mod 保有政治／經濟／司法狀態，本 Mod 提供 prompt、雙模式、共享本地 LLM 的政府 agent 與自治工程；不宣稱官方認可，不複製未授權實作。
 - 自然語言影響可執行政策，再透過模擬產生後果。不得由 LLM 編造證據、選票、金錢、工程結果或任意直接改值。
 - 繁體中文溝通與 UI 為預設。不要重問已確認的角色、雙按鈕、暴動需求或手機問題。
+- [完整玩法設計](docs/GAMEPLAY_DESIGN.md) 整理與 Presidente 的玩家流程及責任邊界；其建議預設和待驗證映射不能當作已實作能力，原有核心需求及完整驗收以 PRD 為準。
+- 使用者已確認全部七項選擇 **1A、2A、3A、4B、5A、6A、7A**，見 [決策紀錄](docs/GAMEPLAY_DECISIONS.md)。不得重問或改回暫定：跟隨人物，離任轉在野、競選及依法復權；可嘗試越權但有後果；重大集權由玩家決定；手動操作事後追責；零人口先臨時國家行政；沒有元首私人股票帳戶；採情報視角。無職權時不能透過 prompt、手動工具或過期工作繼續動用國家行政權，完整身份切換仍須驗證，不能只交付離任觀看。
 
 ## 已有工具：不要假設需要重新安裝
 
@@ -27,7 +29,7 @@
 | .NET SDK | 8.0.428，已安裝 | 截圖及 `dotnet --list-sdks` |
 | C# 模組專案範本 | 已安裝，短名 `csiimod` | 截圖及 `dotnet new list` |
 | Node.js | 22.21.0，已安裝 | 截圖及 `node --version` |
-| UI 模組專案範本 | 已安裝 | 使用者截圖，尚未獨立生成驗證 |
+| UI 模組專案範本 | 已安裝並生成獨立 probe | 使用者截圖；後續 probe 建置與遊戲內雙向通訊均通過，非正式 UI |
 | Visual Studio | 17.14.37516.0，已偵測 | 使用者截圖 |
 | VS Code | 1.146.0，已偵測 | 使用者截圖 |
 | Rider | 2021.3.3 或更新版未偵測 | 使用者截圖；不是必需依賴 |
@@ -68,6 +70,8 @@ CSII_USERDATAPATH=C:\Users\rayng\AppData\LocalLow\Colossal Order\Cities Skylines
 
 - Presidente ID 為 `160999`。已安裝到 `ag-test`，平台標示 1.7.4，實際 public 內容標籤 1.7.2，遊戲日誌已確認載入。已從遊戲程序讀回 8 個政治相關系統，並通過 UI／C# roundtrip，但未完成政策寫入、城市後果與存檔驗證；仍未找到授權公開源碼或作者承諾的穩定 SDK。不要發明接口，也不要將讀取成功當作完成整合。
 - 已確認 `LegislativeCatalogue.All`、`StandingSystem.ProvideLaws`／`LawProviders`、`AfterDivision`、`MoodModifiers` 等公開擴充結構。使用前驗證回呼語意；只註冊／反註冊自己的回呼，不能清空別人的清單，重載也不能重複註冊。
+- 2026-11-16 已在城市另存副本後透過 NewBill 建立草案 #1，法案數 0→1，獨立 Find 查詢成功；未提交、生效或撥款。前後另存均成功建立，但尚未重載驗證。不得把草案寫入成功擴大成所有政策、執政權限與持久化已通過；詳見 PREFLIGHT。
+- 全量 metadata 索引見 [內部設定盤點](docs/PRESIDENTE_SETTINGS_AUDIT.md)：43 個選項類屬性、133 個系統 public setter（含 53 個訊息欄位）、完整公開成員 CSV。只對已記錄雜湊的 public 內容成立；不要把常數、私人欄位、狀態資料或生命週期方法自動當成可用政策工具。公開 setter 與方法尚未逐項驗證，執行器仍須使用能力白名單。
 - 同時安裝、讀取資料、控制功能、重用源碼是不同能力，分別驗證並記錄支援版本。
 - 檢查公開源碼與授權後才能複用；保留必要通知。沒有查到不等於不存在，更不等於可任意複製。
 - Network Tools 是道路研究候選，不是已驗證的施工 API。只有實際需要且授權合適時才引入程式碼或依賴。

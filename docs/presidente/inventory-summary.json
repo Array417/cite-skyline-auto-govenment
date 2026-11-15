@@ -1,0 +1,28 @@
+{
+  "sha256": "e60f1dd8a48de950f0d35b4f9a663f12b9ff62f6a70e43ea2e66afdb55424130",
+  "publicPayload": "1.7.2",
+  "platformVersion": "1.7.4",
+  "checked": "2026-11-16 Asia/Hong_Kong",
+  "scope": "Installed public payload metadata; excludes non-HomelandSecurity, compiler-generated types and access-gate types. No game code executed or setters invoked.",
+  "attributeDecodeLimit": "External enum underlying types default to Int32; attribute values are metadata, not current runtime values or constructor defaults.",
+  "stats": {
+    "totalMetadataTypes": 2839,
+    "includedTypes": 1773,
+    "excludedTypes": 1066,
+    "publicTypes": 1251,
+    "systems": 159,
+    "settingProperties": 43,
+    "publicProperties": 4077,
+    "publicSetterProperties": 176,
+    "publicSystemSetterProperties": 133,
+    "publicFields": 8441,
+    "publicSystemMethods": 5571,
+    "numericBooleanConstants": 8820,
+    "privateSystemMembers": 7687,
+    "attributeDecodeErrors": 0,
+    "publicMethods": 6876,
+    "visibleSettingProperties": 30,
+    "settingButtons": 3,
+    "systemSetterMessages": 53
+  }
+}
