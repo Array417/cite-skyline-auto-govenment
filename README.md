@@ -42,6 +42,13 @@ Cities: Skylines II 虛擬政府 Mod 專案。玩家以國家元首身分輸入�
 3. 安裝 Git 及所需 IDE；做 UI 開發時再確認 Node.js。官方下載：[.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)、[Node.js](https://nodejs.org/en/download)。版本以工具鏈相容性為準。
 4. 完成安裝後重新開啟 PowerShell／IDE，從 GitHub 的 Code 選單複製實際倉庫 URL，clone 或用 SourceTree 加入本機倉庫。以下命令均在倉庫根目錄執行。
 
+本專案為私人倉庫，clone 前需以獲授權的 GitHub 帳戶登入：
+
+```powershell
+git clone https://github.com/Array417/cite-skyline-auto-govenment.git
+Set-Location cite-skyline-auto-govenment
+```
+
 ```powershell
 git --version
 dotnet --list-sdks
